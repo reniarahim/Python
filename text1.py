@@ -28,4 +28,9 @@ def runCommand(cmd, timeout=None, window=None):
         line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
         output += line
         print(line)
-        window.
+        window.Refresh() if window else None        # yes, a 1-line if, so shoot me
+    retval = p.wait(timeout)
+    return (retval, output)                         # also return the output just for fun
+
+if __name__ == '__main__':
+    main()
